@@ -1,37 +1,61 @@
+/* * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+} */
 html body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin:0px;
     padding:0px;
     background-color: #F4F4F4;
 }
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    width: 100%;
-    height: 80px; 
-    display: inline-flex;
-    justify-content: space-around; 
-    background-color: #F4F4F4; 
-  }
 
+.navbar {
+    font-size: 18px;
+    padding-bottom: 10px;
+    background-color: #F4F4F4; 
+}
+
+.main-nav {
+    list-style-type: none;
+    display: none;
+}
+
+.nav-links,
+.logo {
+    text-decoration: none;
+    color: #3ACF23; 
+}
+
+.main-nav li {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.logo {
+    display: inline-block;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+}
+
+.active {
+    display: block;
+}
 .span-logo{
     color: black;
 }
-.logo{
-    font-weight: bold;
-    font-size: x-large;
-    margin-right: 20em;
-}
 
-.navbar > a {
-    vertical-align: top;
-    /* height: 80px;         */
-    line-height: 80px; 
-    text-decoration: none; 
-    color: #3ACF23; 
-}
 .hero { 
     position: relative; 
     height: 100vh;
@@ -62,22 +86,16 @@ html body{
     position: relative;
     color: #ffffff; 
     display: block; 
+    font-size: 1.5em;
+    margin: 1em 0;
 }
-/* .section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
+
 .section-heading{
     padding-top: 3em;
     color: #82005A;
     text-align: center;
 }
-.box{
-    display: flex;
-    justify-content: space-around;
-    width:100%;
-}
+
 .number{
     border-radius: 50%;
     border: 1px solid #3C6950;
@@ -88,7 +106,7 @@ html body{
 .inner-box{
     border: 1px solid #3C6950;
     border-radius: 0.5em;
-    width: 20em;
+    width: 22em;
     height:20em;
     display: flex;
     flex-direction: column;
@@ -108,36 +126,115 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: rgb(117, 23, 88);
-    height:150px;
+    height: 100%;
     margin-top: 5em;
+    display: flex;
+    justify-content: space-evenly;
   }
   .footer{
-    display: flex;
-    justify-content: space-around; 
+      display: flex;
+      flex-direction: column;
   }
+  .footer-bottom{
+    display: flex;
+    flex-direction: column;
+  }
+  
   .footer > a {
     line-height: 80px; 
     text-decoration: none; 
     color: #f4f4f4; 
 }
-.footer-bottom{
-    display: flex;
-    justify-content: flex-end; 
-    
-}
+
 .footer-bottom > a {
     line-height: 80px; 
     text-decoration: none; 
     color: #f4f4f4; 
-    margin:0 3em;
 }
 .footer-text{
     color:gray;
 }
-.line{
-    width: 80%;
-    height: 1px;
-    display: flex;
-    margin: 0 6em;
-    border-bottom: 1px solid gray;
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 70px;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .main-nav {
+        display: flex;
+        margin-right: 2em;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .nav-links {
+        margin-left: 40px;
+        border: 1px solid #3ACF23;
+        border-radius: 0.2em;
+        width: 6em;
+        height:3em;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center; 
+    }
+
+    .logo {
+        margin: 0 5em;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+
+    .nav-links:hover {
+        background-color: white;
+    }
+    .box{
+        display: flex;
+        justify-content: space-around;
+        width:100%;
+    }
+    
+    footer{
+        height: 100%;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(117, 23, 88);
+        margin-top: 5em;
+        display: block;
+    }
+    .footer{     
+        display: flex;
+        justify-content: space-around; 
+        flex-direction: row;
+      }
+      .footer-bottom{
+        display: flex;
+        justify-content: flex-end; 
+        flex-direction: row;
+    }
+    
+    .line{
+        width: 80%;
+        height: 1px;
+        display: flex;
+        margin: 0 6em;
+        border-bottom: 1px solid gray;
+    }
+    .footer-bottom > a{
+        margin:0 3em;
+    }
 }
