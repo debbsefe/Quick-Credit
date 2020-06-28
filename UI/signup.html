@@ -23,6 +23,37 @@
             </li>
         </ul>
     </nav>
+    <section>
+        <p class="section-header">Sign up on &nbsp;<span class="span-logo2">Quick</span>Credit</p>
+        <form class="form" action="dashboard.html">
+            <div class="form-wrapper">
+            <div>
+            <label>First name</label>
+            <input type="text" class="form-control" placeholder="First name" name="first-name" id="first-name" required>
+            <span class="firstBlank error"></span><br>
+            </div>
+            <div>
+                <label>Last name</label>
+                <input type="text" class="form-control" placeholder="Last name" name="last-name" id="last-name" required>
+                <span class="lastBlank error"></span><br>
+            </div>
+            <div>
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Email" name="email" id="email" required>
+                <span class="emailBlank error"></span><br>
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+                <span class="passwordBlank error"></span><br>
+            </div>
+            <button type="submit" class="submit" id="signup" onclick="">Sign up <i class="fa fa-spinner fa-spin" id="spinner"></i></button>
+        </div>
+        </form>
+        <div class="bottom-text">
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </section>
     <footer>
         <div class="footer">
         <a>Email: hello@quickcreditng.ng</a>
@@ -39,5 +70,6 @@
             <a>Copyright 2020</a>
         </div>
     </footer>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
