@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../UI/assets/css/dashboard.css">
+    <link rel="shortcut icon" href="../UI/assets/images/short.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a8cf29b943.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="grid-container">
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+          </div>
+        <header class="header">
+            <div class="header__search"><i class="fas fa-search"></i><input type="text" class="search-input" placeholder="search..." /></div>
+  <div class="header__avatar">
+      <img src="assets/images/avatar2.png" alt="avatar">
+    </div>
+        </header>
+        <aside class="sidenav">
+            <div class="sidenav__close-icon">
+                <i class="fas fa-times"></i>
+                
+              </div>
+              <a class="active" href="dashboard.html">Dashboard</a>
+                <a href="index.html">Home</a>
+                <a href="loan.html">Apply for loan</a>
+                <a href="dashboard.html">Profile</a>
+                <a href="user_transactions.html">Transactions</a>
+                <a href="login.html">Logout</a>
+        </aside>
+        <main class="main">
+            <h3> LOAN REPAYMENT HISTORY</h3>
+            <hr>
+            <table class="transaction-table">
+                <thead>
+                  <tr>
+                    <th>Loan ID</th>
+                    <th>Created On</th>
+                    <th>Monthly Installment</th>
+                    <th>Amount</th>
+                    <th>Month</th>
+                    <th>Paid Amount</th>
+                    <th>Status</th>
+                    <th>Balance</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-th="Loan ID">#22338</td>
+                    <td data-th="Created On">03-01-2019</td>
+                    <td data-th="Monthly Installment">₦26667.534</td>
+                    <td data-th="Loan Amount">₦200000</td>
+                    <td data-th="Month">January</td>
+                    <td data-th="Paid Amount">₦27000</td>
+                    <td data-th="Status" class="approve">PAID</td>
+                    <td data-th="Balance">₦154660.770</td>
+                    <td data-th="Action">
+                      <button class="disabled">
+                        <a href="#" target="_blank">Make Payments</a>
+                      </button>
+                    </td>
+                  </tr>
+  
+                  <tr>
+                    <td data-th="Loan ID">#22338</td>
+                    <td data-th="Created On">03-01-2019</td>
+                    <td data-th="Monthly Installment">₦26667.534</td>
+                    <td data-th="Loan Amount">₦200000</td>
+                    <td data-th="Month">February</td>
+                    <td data-th="Paid Amount">₦27000</td>
+                    <td data-th="Status" class="approve">PAID</td>
+                    <td data-th="Balance">₦154660.770</td>
+                    <td data-th="Action">
+                      <button class="disabled">
+                        <a href="#" target="_blank">Make Payments</a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-th="Loan ID">#22338</td>
+                    <td data-th="Created On">03-01-2019</td>
+                    <td data-th="Monthly Installment">₦26667.534</td>
+                    <td data-th="Loan Amount">₦200000</td>
+                    <td data-th="Month">March</td>
+                    <td data-th="Paid Amount">₦27000</td>
+                    <td data-th="Status" class="approve">PAID</td>
+                    <td data-th="Balance">₦154660.770</td>
+                    <td data-th="Action">
+                      <button class="disabled">
+                        <a href="#" target="_blank">Make Payments</a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-th="Loan ID">#22338</td>
+                    <td data-th="Created On">03-01-2019</td>
+                    <td data-th="Monthly Installment">₦26667.534</td>
+                    <td data-th="Loan Amount">₦200000</td>
+                    <td data-th="Month">April</td>
+                    <td data-th="Paid Amount">₦27000</td>
+                    <td data-th="Status" class="approve">PAID</td>
+                    <td data-th="Balance">₦154660.770</td>
+                    <td data-th="Action">
+                      <button class="disabled">
+                        <a href="#" target="_blank">Make Payments</a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-th="Loan ID">#22338</td>
+                    <td data-th="Created On">03-01-2019</td>
+                    <td data-th="Monthly Installment">₦26667.534</td>
+                    <td data-th="Loan Amount">₦200000</td>
+                    <td data-th="Month">May</td>
+                    <td data-th="Paid Amount">₦27000</td>
+                    <td data-th="Status">PENDING</td>
+                    <td data-th="Balance">₦154660.770</td>
+                    <td data-th="Action">
+                      <button  class="view-loan">
+                        <a href="#" target="_blank">Make Payments</a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+  
+            
+        </main>
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2020 Mamus Eferha</div>
+        </footer>
+      </div>
+      <script src="assets/js/script.js"></script>
+
+</body>
+</html>
