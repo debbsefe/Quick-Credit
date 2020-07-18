@@ -3,9 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../UI/assets/css/dashboard.css">
+    <link rel="shortcut icon" href="../UI/assets/images/short.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a8cf29b943.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    
+    <div class="grid-container">
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+          </div>
+        <header class="header">
+            <div class="header__search"><i class="fas fa-search"></i><input type="text" class="search-input" placeholder="search..." /></div>
+  <div class="header__avatar">
+      <img src="assets/images/avatar2.png" alt="avatar">
+    </div>
+        </header>
+        <aside class="sidenav">
+            <div class="sidenav__close-icon">
+                <i class="fas fa-times"></i>
+                
+              </div>
+              <a class="active" href="dashboard.html">Dashboard</a>
+                <a href="index.html">Home</a>
+                <a href="loan.html">Apply for loan</a>
+                <a href="dashboard.html">Profile</a>
+                <a href="user_transactions.html">Transactions</a>
+                <a href="login.html">Logout</a>
+        </aside>
+        <main class="main">
+            <div class="main-cards">
+                <div class="card loan"><a class="apply-loan" href="loan.html">Apply for loan</a></div>
+                <div class="card">
+                    <h4>Profile</h4>
+                    <div class="profile">
+                        <p>Full Name</p>
+                        <p>Eferha Mamus</p>
+                    </div>
+                    
+                    <div class="profile">
+                        <p>Email</p>
+                        <p>eferhamamus@gmail.com</p>
+                    </div>
+                    
+                    <div class="profile">
+                        <p>Address</p>
+                        <p>Lagos, Nigeria</p>
+                    </div>
+                    
+                    <div class="profile">
+                        <p>Phone number</p>
+                        <p>08147125488</p>
+                    </div>
+                    
+                </div>
+                <div class="card">
+                    <h4>Loan Transactions</h4>
+                    <table>
+                        <tr>
+                          <th>Loan Id</th>
+                          <th>Date</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                        <tr>
+                          <td>#0000</td>
+                          <td>03-01-2020</td>
+                          <td>N50000</td>
+                          <td>Pending</td>
+                          <td><button class="view-loan"><a href="user_transactions.html">View</a></button></td>
+                        </tr>
+                        <tr>
+                            <td>#0001</td>
+                            <td>03-01-2020</td>
+                            <td>N100000</td>
+                            <td>Settled</td>
+                            <td><button class="view-loan"><a href="user_transactions.html">View</a></button></td>
+                        </tr>
+                      </table>
+                </div>
+              </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2020 Mamus Eferha</div>
+        </footer>
+      </div>
+      <script src="assets/js/script.js"></script>
+
 </body>
 </html>
