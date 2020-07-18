@@ -14,6 +14,18 @@ let letters = /^[a-z]*$/i;
 let emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 let spinner = document.getElementById("spinner");
 
+let menuIcon = document.querySelector(".menu-icon");
+let sidenavOpen = document.querySelector('.sidenav');
+let sidenavClose = document.querySelector('.sidenav__close-icon');
+
+
+menuIcon.addEventListener("click", function () {
+  sidenavOpen.classList.toggle("active");
+});
+sidenavClose.addEventListener("click", function () {
+  sidenavOpen.classList.toggle("active");
+});
+
 navBarToggle.addEventListener("click", function () {
   mainNav.classList.toggle("active");
 });
@@ -22,7 +34,7 @@ signup.addEventListener("click", function (e) {
   e.preventDefault();
   // spinner.style.display = "inline-block";
   firstName.value == "" ?
-    firstBlank.innerText = "First Name cannot be empty": firstName.value.length < 2 ?
+    firstBlank.innerText = "First Name cannot be empty" : firstName.value.length < 2 ?
       firstBlank.innerText = "First Name cannot be less than 2 characters" :
       !firstName.value.match(letters) ?
         firstBlank.innerText = "First Name cannot contain numbers" :
@@ -47,10 +59,10 @@ signup.addEventListener("click", function (e) {
     password.value.length < 6 ?
       passwordBlank.innerText = "Password cannot be less than 6 characters" :
       passwordBlank.innerText = "";
-  
-      if(passwordBlank.innerText == "" && emailBlank.innerText == "" && lastBlank.innerText == "" && firstBlank.innerText == ""){
-        spinner.style.display == "inline-block"
-        window.location.href = "dashboard.html";
-      }
+
+  if (passwordBlank.innerText == "" && emailBlank.innerText == "" && lastBlank.innerText == "" && firstBlank.innerText == "") {
+    spinner.style.display == "inline-block"
+    window.location.href = "dashboard.html";
+  }
 
 });
