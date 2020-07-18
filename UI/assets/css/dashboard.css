@@ -37,6 +37,7 @@ body {
 .footer {
   grid-area: footer;
   background-color: #f4f4f4;
+  bottom: 0;
 }
 .main-cards {
   column-count: 2;
@@ -208,6 +209,17 @@ body {
   cursor: pointer;
   border-radius: 0.5em;
 }
+.disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  padding: 0.5em 1.5em;
+  color: #666666;
+  
+  border-radius: 0.5em;
+}
+.disabled a{
+  cursor: not-allowed;
+}
 a {
   text-decoration: none;
   color: white;
@@ -217,6 +229,10 @@ table {
   border-spacing: 0;
   width: 100%;
   color: #545454;
+}
+.transaction-table th{
+  background-color: gray;
+  color: white;
 }
 
 th,
