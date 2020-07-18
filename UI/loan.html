@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../UI/assets/css/dashboard.css">
+    <link rel="shortcut icon" href="../UI/assets/images/short.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a8cf29b943.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="grid-container">
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+          </div>
+        <header class="header">
+            <div class="header__search"><i class="fas fa-search"></i><input type="text" class="search-input" placeholder="search..." /></div>
+  <div class="header__avatar">
+      <img src="assets/images/avatar2.png" alt="avatar">
+    </div>
+        </header>
+        <aside class="sidenav">
+            <div class="sidenav__close-icon">
+                <i class="fas fa-times"></i>
+                
+              </div>
+              <a class="active" href="dashboard.html">Dashboard</a>
+                <a href="index.html">Home</a>
+                <a href="loan.html">Apply for loan</a>
+                <a href="dashboard.html">Profile</a>
+                <a href="user_transactions.html">Transactions</a>
+                <a href="login.html">Logout</a>
+        </aside>
+        <main class="main">
+            <h3><span class="span-logo">QUICK CREDIT</span> LOAN APPLICATION</h3>
+            <hr>
+            <form class="form" action="dashboard.html">
+                <div class="form-wrapper">
+                <div>
+                <label>First name</label>
+                <input type="text" class="form-control" name="first-name" id="firstName" required>
+                <span class="firstBlank error"></span><br>
+                </div>
+                <div>
+                    <label>Last name</label>
+                    <input type="text" class="form-control"  name="last-name" id="lastName" required>
+                    <span class="lastBlank error"></span><br>
+                </div>
+                <div>
+                    <label>Account Number</label>
+                    <input type="text" class="form-control" name="email" id="account" required>
+                    <span class="emailBlank error"></span><br>
+                </div>
+                <div>
+                    <label>Address</label>
+                    <input type="text" class="form-control" name="address" id="address" required>
+                    <span class="passwordBlank error"></span><br>
+                </div>
+                <div>
+                    <label>Amount</label>
+                    <input type="text" class="form-control" name="amount" id="amount" required>
+                    <span class="passwordBlank error"></span><br>
+                </div>
+                <div>
+                    <label>Purpose</label>
+                    <textarea placeholder="Brief reason why you need loan..." class="form-control" name="purpose" id="purpose" required></textarea>
+                    <span class="passwordBlank error"></span><br>
+                </div>
+                <div>
+                    <label>Phone number</label>
+                    <input type="text" class="form-control" name="number" id="number" required>
+                    <span class="passwordBlank error"></span><br>
+                </div>
+                <button type="submit" class="submit" id="signup" onclick="">Submit </i></button>
+            </div>
+            </form>
+        </main>
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2020 Mamus Eferha</div>
+        </footer>
+      </div>
+      <script src="assets/js/script.js"></script>
+
+</body>
+</html>

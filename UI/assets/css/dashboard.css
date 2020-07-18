@@ -232,6 +232,54 @@ th {
   text-align: center;
   color: #545454;
 }
+.main h3{
+  text-align: center;
+}
+.main hr{
+text-align: center;
+width: 40%;
+}
+.span-logo{
+  color: #3ACF23;
+}
+.form{
+  margin: 3em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-control{
+  display: block;
+  margin: 0.5em 0;
+  border: 1px solid lightgray;
+  background-color: white;
+  padding: 0.75em 9em;
+  border-radius: 0.5em;
+}
+.form-control:focus{
+  outline:#3ACF23 1px solid;
+  border-radius: 0.5em;
+  border: 3px solid rgba(58, 207, 35, 0.5);  
+}
+.form .form-wrapper label{
+  font-weight: bold;
+}
+.submit{
+  width: 100%;
+  background-color: rgb(117, 23, 88);
+  padding: 0.75em;
+  color:#fff;
+  border: 1px solid rgb(117, 23, 88);
+  border-radius: 0.5em;
+  margin: 1em 0;
+}
+.submit:hover{
+  background-color:rgba(168, 23, 122, 1);
+}
+.error{
+  color:red;
+  font-size: 0.75em;
+}
 /* 750px and above */
 @media only screen and (min-width: 46.875em) {
   .grid-container {
