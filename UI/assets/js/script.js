@@ -6,6 +6,7 @@ let lastName = document.getElementById("last-name");
 let email = document.getElementById("email");
 let password = document.getElementById("password");
 let signup = document.getElementById("signup");
+let login = document.getElementById("login");
 let firstBlank = document.querySelector(".firstBlank");
 let lastBlank = document.querySelector(".lastBlank");
 let emailBlank = document.querySelector(".emailBlank");
@@ -18,7 +19,7 @@ let menuIcon = document.querySelector(".menu-icon");
 let sidenavOpen = document.querySelector('.sidenav');
 let sidenavClose = document.querySelector('.sidenav__close-icon');
 
-
+//EVENT LISTENERS FOR SIDENAV TOGGLE
 menuIcon.addEventListener("click", function () {
   sidenavOpen.classList.toggle("active");
 });
@@ -30,6 +31,8 @@ navBarToggle.addEventListener("click", function () {
   mainNav.classList.toggle("active");
 });
 
+
+//SIGNUP VALIDATION AND REDIRECTION TO DASHBOARD
 signup.addEventListener("click", function (e) {
   e.preventDefault();
   // spinner.style.display = "inline-block";
@@ -64,5 +67,6 @@ signup.addEventListener("click", function (e) {
     spinner.style.display == "inline-block"
     window.location.href = "dashboard.html";
   }
-
 });
+
+
