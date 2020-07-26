@@ -350,8 +350,8 @@ height: 120px;
   margin-top: 1em;
 }
 .tab-bar a:hover{
-  color:rgb(117, 23, 88);
-  border-bottom: 2px solid rgb(117, 23, 88);
+  color:rgb(253, 2, 174);
+  border-bottom: 2px solid rgb(253, 2, 174);
   padding-bottom: 3px;
 }
 .tab-bar a{
@@ -359,7 +359,7 @@ color: black;
 font-size: 1em;
 }
 .tab-bar .active{
-  border-bottom: 2px solid rgb(117, 23, 88);
+  border-bottom: 2px solid rgb(253, 2, 174);
   padding-bottom: 3px;
 }
 .heading{
