@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../UI/assets/css/dashboard.css">
+    <link rel="shortcut icon" href="../UI/assets/images/short.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a8cf29b943.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <header class="header">
+            <div class="header__search"><i class="fas fa-search"></i><input type="text" class="search-input"
+                    placeholder="search..." /></div>
+            <div class="header__avatar">
+                <img src="assets/images/avatar2.png" alt="avatar">
+            </div>
+        </header>
+        <aside class="sidenav">
+            <div class="sidenav__close-icon">
+                <i class="fas fa-times"></i>
+
+            </div>
+            <a href="admin_dashboard.html">Dashboard</a>
+            <a href="index.html">Home</a>
+            <a  href="user_verify.html">Users</a>
+            <a class="active"href="user_loans.html">Loans</a>
+
+
+            <a href="login.html">Logout</a>
+        </aside>
+        <main class="main">
+            <div class="tab-bar">
+            <a href="user_loans.html">All Loans</a>
+            <a href="current_loans.html">Current Loans</a>
+            <a class="active" href="">Repaid Loans</a>
+            <a href="admin_transactions.html">Transactions</a>
+        </div>
+       
+          <table class="transaction-table">
+            <thead>
+              <th>Loan ID</th>
+              <th>Email Address</th>
+              <th>Created On</th>
+              <th>Status</th>
+              <th>Repaid</th>
+              <th>Tenor</th>
+              <th>Loan Amount</th>
+              <th>Installment</th>
+              <th>Balance</th>
+              <th>Interest</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-th="Loan-Id">1000</td>
+                <td data-th="Email">eferhamamus@gmail.com</td>
+                <td data-th="Created On">12-13-2019</td>
+                <td class="loan-status" data-th="Status">PENDING</td>
+                <td data-th="Repaid">FALSE</td>
+                <td data-th="Tenor">10 months</td>
+                <td data-th="Amount">₦200, 000</td>
+                <td data-th="Installment">₦20, 000</td>
+                <td data-th="Balance">₦200, 000</td>
+                <td data-th="interest">₦1000</td>
+                <td data-th="Action">
+                  <button class="accept" id="1">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="reject" id="1">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td data-th="Loan-Id">1000</td>
+                <td data-th="Email">eferhamamus@gmail.com</td>
+                <td data-th="Created On">12-13-2019</td>
+                <td class="loan-status" data-th="Status">PENDING</td>
+                <td data-th="Repaid">FALSE</td>
+                <td data-th="Tenor">10 months</td>
+                <td data-th="Amount">₦200, 000</td>
+                <td data-th="Installment">₦20, 000</td>
+                <td data-th="Balance">₦200, 000</td>
+                <td data-th="interest">₦1000</td>
+                <td data-th="Action">
+                  <button class="accept" id="2">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="reject" id="2">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td data-th="Loan-Id">1000</td>
+                
+                <td data-th="Email">eferhamamus@gmail.com</td>
+                <td data-th="Created On">12-13-2019</td>
+                <td class="loan-status" data-th="Status">PENDING</td>
+                <td data-th="Repaid">FALSE</td>
+                <td data-th="Tenor">10 months</td>
+                <td data-th="Amount">₦200, 000</td>
+                <td data-th="Installment">₦20, 000</td>
+                <td data-th="Balance">₦200, 000</td>
+                <td data-th="interest">₦1000</td>
+                <td data-th="Action">
+                  <button class="accept" id="3">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="reject" id="3">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td data-th="Loan-Id">1000</td>
+                <td data-th="Email">eferhamamus@gmail.com</td>
+                <td data-th="Created On">12-13-2019</td>
+                <td class="loan-status" data-th="Status">PENDING</td>
+                <td data-th="Repaid">FALSE</td>
+                <td data-th="Tenor">10 months</td>
+                <td data-th="Amount">₦200, 000</td>
+                <td data-th="Installment">₦20, 000</td>
+                <td data-th="Balance">₦200, 000</td>
+                <td data-th="interest">₦1000</td>
+                <td data-th="Action">
+                  <button class="accept" id="4">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="reject" id="4">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td data-th="Loan-Id">1000</td>
+                <td data-th="Email">eferhamamus@gmail.com</td>
+                <td data-th="Created On">12-13-2019</td>
+                <td class="loan-status" data-th="Status">PENDING</td>
+                <td data-th="Repaid">FALSE</td>
+                <td data-th="Tenor">10 months</td>
+                <td data-th="Amount">₦200, 000</td>
+                <td data-th="Installment">₦20, 000</td>
+                <td data-th="Balance">₦200, 000</td>
+                <td data-th="interest">₦1000</td>
+                <td data-th="Action">
+                  <button class="accept" id="5">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="reject" id="5">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td data-th="Loan-Id">1000</td>
+                <td data-th="Email">eferhamamus@gmail.com</td>
+                <td data-th="Created On">12-13-2019</td>
+                <td class="loan-status" data-th="Status">PENDING</td>
+                <td data-th="Repaid">FALSE</td>
+                <td data-th="Tenor">10 months</td>
+                <td data-th="Amount">₦200, 000</td>
+                <td data-th="Installment">₦20, 000</td>
+                <td data-th="Balance">₦200, 000</td>
+                <td data-th="interest">₦1000</td>
+                <td data-th="Action">
+                  <button class="accept" id="6">
+                    <i class="fas fa-check"></i>
+                  </button>
+                  <button class="reject" id="6">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </main>
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2020 Mamus Eferha</div>
+        </footer>
+    </div>
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
