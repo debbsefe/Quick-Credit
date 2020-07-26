@@ -364,6 +364,7 @@ font-size: 1em;
 }
 .heading{
   text-align: center;
+  text-transform: uppercase;
 }
 button.accept{
 color: green;
