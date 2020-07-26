@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../UI/assets/css/dashboard.css">
+    <link rel="shortcut icon" href="../UI/assets/images/short.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a8cf29b943.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <header class="header">
+            <div class="header__search"><i class="fas fa-search"></i><input type="text" class="search-input"
+                    placeholder="search..." /></div>
+            <div class="header__avatar">
+                <img src="assets/images/avatar2.png" alt="avatar">
+            </div>
+        </header>
+        <aside class="sidenav">
+            <div class="sidenav__close-icon">
+                <i class="fas fa-times"></i>
+
+            </div>
+            <a href="admin_dashboard.html">Dashboard</a>
+            <a href="index.html">Home</a>
+            <a class="active" href="user_verify.html">Users</a>
+            <a href="user_loans.html">Loans</a>
+
+
+
+            <a href="login.html">Logout</a>
+        </aside>
+        <main class="main">
+            <table class="transaction-table" id="user-table" onclick=verifyUser()>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email Address</th>
+                        <th>Address</th>
+                        <th>Registered on</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-th="ID">1</td>
+                        <td data-th="First Name">Mamus</td>
+                        <td data-th="Last Name">Eferha</td>
+                        <td data-th="Email">eferhamamus@gmail.com</td>
+                        <td data-th="Address">9, Aj Street Kola</td>
+                        <td data-th="Created On">23-07-2020</td>
+                        <td data-th="Status">
+                            <input type="checkbox" class="myCheck" id="1" / checked
+                                    value='VERIFIED'><span class="slider round">
+                            <span id="1" class="user-status">UNVERIFIED</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td data-th="ID">2</td>
+                        <td data-th="First Name">Mamus</td>
+                        <td data-th="Last Name">Eferha</td>
+                        <td data-th="Email">eferhamamus@gmail.com</td>
+                        <td data-th="Address">9, Aj Street Kola</td>
+                        <td data-th="Created On">23-07-2020</td>
+                        <td data-th="Status">
+                            <input type="checkbox" class="myCheck" id="2" / checked
+                                    value='VERIFIED'>
+                            <span id="2" class="user-status">VERIFIED</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-th="ID">3</td>
+                        <td data-th="First Name">Mamus</td>
+                        <td data-th="Last Name">Eferha</td>
+                        <td data-th="Email">eferhamamus@gmail.com</td>
+                        <td data-th="Address">9, Aj Street Kola</td>
+                        <td data-th="Created On">23-07-2020</td>
+                        <td data-th="Status">
+                            <input type="checkbox" class="myCheck" id="3" / checked
+                                    value='VERIFIED'>
+                            <span id="3" class="user-status">UNVERIFIED</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-th="ID">4</td>
+                        <td data-th="First Name">Mamus</td>
+                        <td data-th="Last Name">Eferha</td>
+                        <td data-th="Email">eferhamamus@gmail.com</td>
+                        <td data-th="Address">9, Aj Street Kola</td>
+                        <td data-th="Created On">23-07-2020</td>
+                        <td data-th="Status">
+                           <input type="checkbox" class="myCheck" id="4" / checked
+                                    value='VERIFIED'>
+                            <span id="4" class="user-status">VERIFIED</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-th="ID">5</td>
+                        <td data-th="First Name">Mamus</td>
+                        <td data-th="Last Name">Eferha</td>
+                        <td data-th="Email">eferhamamus@gmail.com</td>
+                        <td data-th="Address">9, Aj Street Kola</td>
+                        <td data-th="Created On">23-07-2020</td>
+                        <td data-th="Status">
+                            <input type="checkbox" class="myCheck" id="5" / checked
+                                    value='VERIFIED'>
+                            <span id="5" class="user-status">VERIFIED</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </main>
+        <footer class="footer">
+            <div class="footer__copyright">&copy; 2020 Mamus Eferha</div>
+        </footer>
+    </div>
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
