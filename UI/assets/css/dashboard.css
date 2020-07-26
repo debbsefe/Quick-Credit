@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(244,246,248);
+  background-color: #F4F4F4;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .header {
@@ -7,7 +7,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  background-color: #648ca6;
+  background-color: #F4F4F4;
 }
 .grid-container {
   display: grid;
@@ -22,7 +22,7 @@ body {
 
 .header {
   grid-area: header;
-  background-color: rgb(244,246,248);
+  background-color: #F4F4F4;
 }
 
 
@@ -33,12 +33,12 @@ body {
 
 .main {
   grid-area: main;
-  background-color: rgb(244,246,248);
+  background-color: #F4F4F4;
 }
 
 .footer {
   grid-area: footer;
-  background-color: rgb(244,246,248);
+  background-color: #F4F4F4;
   bottom: 0;
 }
 .main-cards {
@@ -107,7 +107,7 @@ body {
 .sidenav {
   display: none;
   grid-area: sidenav;
-  background-color: rgba(117, 23, 88, 0.46);
+  background-color: #F4F4F4;
 }
 .sidenav a {
   /* border: 1px solid  #3C6950 ;
@@ -365,6 +365,13 @@ font-size: 1em;
 .heading{
   text-align: center;
 }
+button.accept{
+color: green;
+}
+button.reject{
+  color: red;
+  }
+
 /* 750px and above */
 @media only screen and (min-width: 46.875em) {
   .grid-container {
@@ -378,7 +385,7 @@ font-size: 1em;
   .sidenav {
     display: flex;
     flex-direction: column;
-    background-color: rgb(244,246,248);;
+    background-color: #F4F4F4;
     /* background-color: rgba(0, 0, 0, 0.8); */
     position: relative;
     transform: translateX(0);
