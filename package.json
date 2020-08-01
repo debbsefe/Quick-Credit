@@ -1,0 +1,25 @@
+{
+  "name": "quick-credit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/ap.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debbsefe/Quick-Credit.git"
+  },
+  "author": "Mamus Eferha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/debbsefe/Quick-Credit/issues"
+  },
+  "homepage": "https://github.com/debbsefe/Quick-Credit#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^7.6.0",
+    "mocha": "^8.1.0"
+  }
+}
