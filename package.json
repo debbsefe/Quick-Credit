@@ -10,7 +10,9 @@
     "dev": "nodemon --exec npm start",
     "setup": "npm-run-all -p start create-tables",
     "seed-user-table": "babel-node ./server/helpers/seed seedUser",
-    "type": "module"
+    "type": "module",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",

@@ -99,8 +99,8 @@ const invalidPasswordLength = {
 };
 
 const correctLogin = {
-    email: 'jamesdoe@gmail.com',
-    password: 'jamesdoe',
+    email: 'eferhmamus@yahoo.com',
+    password: '111111',
 };
 
 const undefinedEmailLogin = {
@@ -128,7 +128,7 @@ const emptyEmailField = {
 };
 
 const correctEmailIncorrectPassword = {
-    email: 'jamesdoe@gmail.com',
+    email: 'eferhmamus@yahoo.com',
     password: 'Jamesdroeh',
 };
 
