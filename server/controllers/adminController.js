@@ -28,7 +28,6 @@ const createAdmin = async (req, res) => {
     const { is_admin } = req.user;
 
     const isAdmin = true;
-    const status = 'verified';
     const created_on = moment(new Date());
 
     if (!is_admin === false) {
@@ -50,8 +49,8 @@ const createAdmin = async (req, res) => {
     }
     const hashedPassword = hashPassword(password);
     const createUserQuery = `INSERT INTO
-        users(email, first_name, last_name, password, is_admin, address, status, created_on)
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+        users(email, first_name, last_name, password, is_admin, address, created_on)
+        VALUES($1, $2, $3, $4, $5, $6, $7)
         returning *`;
     const values = [
         email,
@@ -60,7 +59,6 @@ const createAdmin = async (req, res) => {
         hashedPassword,
         isAdmin,
         address,
-        status,
         created_on,
     ];
 
@@ -68,7 +66,7 @@ const createAdmin = async (req, res) => {
         const { rows } = await dbQuery.query(createUserQuery, values);
         const dbResponse = rows[0];
         delete dbResponse.password;
-        const token = generateUserToken(dbResponse.email, dbResponse.id, dbResponse.is_admin, dbResponse.first_name, dbResponse.last_name, dbResponse.address, dbResponse.status);
+        const token = generateUserToken(dbResponse.email, dbResponse.id, dbResponse.is_admin, dbResponse.first_name, dbResponse.last_name, dbResponse.address);
         successMessage.data = dbResponse;
         successMessage.data.token = token;
         return res.status(status.created).send(successMessage);

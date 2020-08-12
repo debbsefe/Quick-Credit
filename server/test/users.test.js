@@ -7,7 +7,7 @@ import {
     undefinedEmail,
     invalidEmailCharacter, existingEmail, undefinedPassword,
     emptyEmail,
-    emptyFirstName, emptyLastName, invalidPasswordLength
+    emptyFirstName, emptyLastName, invalidPasswordLength, correctLogin, nonExistingEmail, undefinedEmailLogin, emptyEmailField, undefinedPasswordLogin, emptyPasswordField
 } from './mockData/mockUser';
 
 // chai middleware
@@ -17,11 +17,10 @@ chai.use(chaiHttp);
 chai.should();
 const url = '/api/v1/auth/signup';
 const email = 'jamesdoe@gmail.com';
+const loginUrl = '/api/v1/auth/signin';
 
 
-
-
-// TEST FOR SIGNUP ROUTE
+//TEST FOR SIGNUP ROUTE
 describe('User Sign Up Tests', () => {
     describe(`POST ${url}`, () => {
         it('Should create a new user account', (done) => {
@@ -216,3 +215,93 @@ describe('User Sign Up Tests', () => {
     });
 });
 
+//TEST FOR LOGIN ROUTE
+describe('User Login Tests', () => {
+    describe(`POST ${loginUrl}`, () => {
+        it('Should successfully login a user account', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(correctLogin)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('data');
+                    res.body.data.should.have.property('token');
+                    res.body.data.should.have.property('user_status');
+                    res.body.data.should.have.property('is_admin');
+                    done();
+                });
+        });
+        it('Should return 404 and deny access if Invalid Email Address is inputed', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(nonExistingEmail)
+                .end((err, res) => {
+                    res.should.have.status(404);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('error');
+                    res.body.error.should.be.eql('User with this email does not exist');
+                    done();
+                });
+        });
+
+
+
+        it('Should return 400  if Email field is omitted', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(undefinedEmailLogin)
+                .end((err, res) => {
+                    res.should.have.status(400);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('error');
+                    res.body.error.should.be.eql('Email or Password detail is missing');
+                    done();
+                });
+        });
+
+        it('Should return 400  if Email field is empty', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(emptyEmailField)
+                .end((err, res) => {
+                    res.should.have.status(400);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('error');
+                    res.body.error.should.be.eql('Email or Password detail is missing');
+                    done();
+                });
+        });
+
+        it('Should return 400  if Password field is omitted', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(undefinedPasswordLogin)
+                .end((err, res) => {
+                    res.should.have.status(400);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('error');
+                    res.body.error.should.be.eql('Email or Password detail is missing');
+                    done();
+                });
+        });
+        it('Should return 400  if Password field is empty', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(emptyPasswordField)
+                .end((err, res) => {
+                    res.should.have.status(400);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('error');
+                    res.body.error.should.be.eql('Email or Password detail is missing');
+                    done();
+                });
+        });
+    });
+});
