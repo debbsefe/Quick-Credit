@@ -3,29 +3,16 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import '@babel/polyfill';
 import 'esm';
-import pg from 'pg';
-
+import usersRoute from './routes/usersRoute';
+import adminRoute from './routes/adminRoute';
 
 const app = express();
-
+app.use(express.json());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api/v1', usersRoute);
+app.use('/api/v1', adminRoute);
 
-
-let conString = "postgres://hialrgzo:i4CM7-9ChU_3QUZTqrdgDRHTaTMMcG5X@raja.db.elephantsql.com:5432/hialrgzo" 
-const client = new pg.Client(conString);
-client.connect(function(err) {
-  if(err) {f
-    return console.error('could not connect to postgres', err);
-  }
-  client.query('SELECT NOW() AS "theTime"', function(err, result) {
-    if(err) {
-      return console.error('error running query', err);
-    }
-    console.log('connected to database');
-    client.end();
-  });
-});
 app.get('/', (req, res) => res.status(301).redirect('/api/v1'));
 
 app.get('/api/v1', (req, res) =>
