@@ -18,19 +18,16 @@ const verifyToken = async (req, res, next) => {
     const { token } = req.headers;
     if (!token) {
         errorMessage.error = 'Token not provided';
-        return res.status(status.bad).send(errorMessage);
+        return res.status(status.unauthorized).send(errorMessage);
     }
+
     try {
         const decoded = jwt.verify(token, process.env.SECRET);
-        req.user = {
-            email: decoded.email,
-            id: decoded.id,
-            is_admin: decoded.is_admin,
-            first_name: decoded.first_name,
-            last_name: decoded.last_name,
-            address: decoded.address,
-            user_status: decoded.user_status,
-        };
+
+        if (decoded.email !== 'admin@quick-credit.com') {
+            errorMessage.error = 'Only Admin can access this route!';
+            return res.status(status.forbidden).send(errorMessage);
+        }
         next();
     } catch (error) {
         errorMessage.error = 'Authentication Failed';

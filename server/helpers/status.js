@@ -9,8 +9,8 @@ const status = {
     created: 201,
     bad: 400,
     nocontent: 204,
+    forbidden: 403,
 };
-
 
 export {
     successMessage,

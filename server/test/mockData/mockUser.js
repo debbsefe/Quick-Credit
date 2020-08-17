@@ -132,6 +132,11 @@ const correctEmailIncorrectPassword = {
     password: 'Jamesdroeh',
 };
 
+const myAdmin = {
+    email: 'admin@quick-credit.com',
+    password: '111111',
+};
+
 export {
     correctUser, undefinedFirstName, undefinedAddress,
     emptyAddress, emptyEmail,
@@ -139,5 +144,5 @@ export {
     undefinedEmail,
     invalidEmailCharacter, existingEmail, undefinedPassword,
     invalidPasswordLength, correctLogin, undefinedEmailLogin,
-    nonExistingEmail, undefinedPasswordLogin, emptyPasswordField, emptyEmailField, correctEmailIncorrectPassword,
+    nonExistingEmail, undefinedPasswordLogin, emptyPasswordField, emptyEmailField, correctEmailIncorrectPassword, myAdmin
 };

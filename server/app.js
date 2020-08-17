@@ -4,14 +4,12 @@ import morgan from 'morgan';
 import '@babel/polyfill';
 import 'esm';
 import usersRoute from './routes/usersRoute';
-import adminRoute from './routes/adminRoute';
 
 const app = express();
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/v1', usersRoute);
-app.use('/api/v1', adminRoute);
 
 app.get('/', (req, res) => res.status(301).redirect('/api/v1'));
 
