@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import moment from 'moment';
 
-import dbQuery from '../models/dev/dbQuery';
+import dbQuery from '../models/dbQuery';
 
 import {
     hashPassword,
@@ -11,6 +11,12 @@ import {
     isEmpty,
     generateUserToken,
 } from '../helpers/validations';
+
+import {
+    createUserQuery,
+    userDetailsQuery,
+    verifyUser,
+} from '../models/queries.js';
 
 import {
     errorMessage, successMessage, status,
@@ -41,10 +47,7 @@ const createUser = async (req, res) => {
         return res.status(status.bad).send(errorMessage);
     }
     const hashedPassword = hashPassword(password);
-    const createUserQuery = `INSERT INTO
-      users(email, first_name, last_name, password, address, created_on)
-      VALUES($1, $2, $3, $4, $5, $6)
-      returning *`;
+
     const values = [
         email,
         first_name,
@@ -88,9 +91,8 @@ const siginUser = async (req, res) => {
         errorMessage.error = 'Please enter a valid Email or Password';
         return res.status(status.bad).send(errorMessage);
     }
-    const signinUserQuery = 'SELECT * FROM users WHERE email = $1';
     try {
-        const { rows } = await dbQuery.query(signinUserQuery, [email]);
+        const { rows } = await dbQuery.query(userDetailsQuery, [email]);
         const dbResponse = rows[0];
         if (!dbResponse) {
             errorMessage.error = 'User with this email does not exist';
@@ -110,11 +112,49 @@ const siginUser = async (req, res) => {
         console.log(error);
         return res.status(status.error).send(errorMessage);
     }
+
 };
 
+/**
+     * @description verifies a user account
+     * @param {object} req - The Request Object
+     * @param {object} res - The Response Object
+     * @returns {object} JSON API Response
+     */
+const adminVerifyUser = async (req, res) => {
+
+    const { email } = req.params;
+
+    // Check if email exist on database
+    const { rows } = await dbQuery.query(userDetailsQuery, [email]);
+    const dbResponse = rows[0];
+    if (!dbResponse) {
+        errorMessage.error = 'User with this email does not exist';
+        return res.status(status.notfound).send(errorMessage);
+    }
+
+    // Check if user is already verified
+    if (dbResponse.user_status === 'verified') {
+        errorMessage.error = 'This User has already been Verified!';
+        return res.status(status.conflict).send(errorMessage);
+    }
+    try {
+        const result = await dbQuery.query(verifyUser, [email]);
+        const returnData = await dbQuery.query(userDetailsQuery, [email]);
+        const user = returnData.rows[0];
+        delete dbResponse.password;
+        successMessage.data = user;
+        successMessage.message = 'Client has been verified successfully';
+        return res.status(status.success).send(successMessage);
+    } catch (error) {
+        errorMessage.error = 'Operation was not successful';
+        console.log(error);
+        return res.status(status.error).send(errorMessage);
+    }
+}
 
 export {
     createUser,
     siginUser,
-
+    adminVerifyUser
 };
