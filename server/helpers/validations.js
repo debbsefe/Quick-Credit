@@ -49,9 +49,6 @@ const isEmpty = (input) => {
     if (input === undefined || input === '') {
         return true;
     }
-    if (input.replace(/\s/g, '').length) {
-        return false;
-    } return true;
 };
 
 /**
@@ -61,6 +58,26 @@ const isEmpty = (input) => {
    */
 const empty = (input) => {
     if (input === undefined || input === '') {
+        return true;
+    }
+};
+
+/**
+   * isInteger helper method
+   * @param {int, integer} input
+   * @returns {Boolean} True or False
+   */
+const isNumber = (input) => {
+    return Number.isInteger(input);
+};
+
+/**
+   * isInteger helper method
+   * @param {int, integer} input
+   * @returns {Boolean} True or False
+   */
+const checkRange = (input) => {
+    if (input >= 1 && input <= 12) {
         return true;
     }
 };
@@ -93,4 +110,6 @@ export {
     isEmpty,
     empty,
     generateUserToken,
+    isNumber,
+    checkRange,
 };

@@ -32,7 +32,28 @@ const createUserTable = () => {
     });
 };
 
-
+const createLoanTable = () => {
+  const loanCreateQuery = `CREATE TABLE IF NOT EXISTS loans(
+  id SERIAL UNIQUE PRIMARY KEY,
+  userEmail VARCHAR(100) NOT NULL REFERENCES users(email) ON DELETE CASCADE,
+  createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  loan_status VARCHAR(20) DEFAULT 'pending',
+  repaid BOOLEAN DEFAULT FALSE,
+  tenor INT NOT NULL,
+  amount NUMERIC NOT NULL,
+  paymentInstallment NUMERIC NOT NULL,
+  balance NUMERIC NOT NULL,
+  interest NUMERIC NOT NULL);`;
+  pool.query(loanCreateQuery)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+}
 //DROP USER TABLE
 
 const dropUserTable = () => {
@@ -48,14 +69,28 @@ const dropUserTable = () => {
     });
 }
 
+const dropLoanTable = () => {
+  const loanDropQuery = 'DROP TABLE IF EXISTS loans';
+  pool.query(loanDropQuery)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+}
 //CREATE ALL TABLES
 const createAllTables = () => {
   createUserTable();
+  createLoanTable();
 }
 
 //DROP ALL TABLES
 const dropAllTables = () => {
   dropUserTable();
+  dropLoanTable();
 };
 
 pool.on('remove', () => {
