@@ -12,11 +12,20 @@ VALUES($1,$2,$3,$4,$5,$6, $7) RETURNING userEmail, createdOn, loan_status, repai
 
 const getUserLoans = 'SELECT * FROM loans WHERE userEmail = $1';
 
+const getLoans = 'SELECT * FROM loans';
+
+const getALoan = 'SELECT * FROM loans WHERE id=$1';
+
+const queryAllLoans = 'SELECT * FROM LOANS WHERE loan_status=$1 AND repaid=$2';
+
 
 export {
     createUserQuery,
     userDetailsQuery,
     verifyUser,
     createLoanQuery,
-    getUserLoans
+    getUserLoans,
+    getLoans,
+    getALoan,
+    queryAllLoans,
 };
