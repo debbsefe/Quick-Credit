@@ -23,8 +23,167 @@ const loanId = 3;
 
 // TEST FOR LOAN APPLICATION ROUTES
 describe('Tests for Loan Endpoint', () => {
-    describe(`POST ${url}`, () => {
-        it('Should return error when token is not entered', (done) => {
+    // describe(`POST ${url}`, () => {
+    //     it('Should return error when token is not entered', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(myAdmin)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .post(url)
+    //                     .end((err, res) => {
+    //                         res.should.have.status(401);
+    //                         res.body.should.be.a('object');
+    //                         res.body.should.have.property('error');
+    //                         res.body.error.should.be.eql('Token not provided');
+    //                         done();
+    //                     });
+    //             });
+    //     });
+    //     it('Should create loan application successfully', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(correctUser)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .post(url)
+    //                     .set('token', token)
+    //                     .send(correctLoan)
+    //                     .end((err, res) => {
+    //                         res.body.should.be.a('object');
+    //                         res.should.have.status(201);
+    //                         res.body.should.have.property('data');
+    //                         done();
+    //                     });
+    //             });
+    //     });
+
+
+    //     it('Should throw error if Amount is omitted', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(correctUser)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .post(url)
+    //                     .set('token', token)
+    //                     .send(ommittedAmount)
+    //                     .end((err, res) => {
+    //                         res.body.should.be.a('object');
+    //                         res.should.have.status(400);
+    //                         res.body.should.have.property('error');
+    //                         res.body.error.should.eql('Tenor, and amount cannot be empty');
+    //                         done();
+    //                     });
+    //             });
+    //     });
+    //     it('Should throw error if tenor is omitted', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(correctUser)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .post(url)
+    //                     .set('token', token)
+    //                     .send(ommittedTenor)
+    //                     .end((err, res) => {
+    //                         res.body.should.be.a('object');
+    //                         res.should.have.status(400);
+    //                         res.body.should.have.property('error');
+    //                         res.body.error.should.eql('Tenor, and amount cannot be empty');
+    //                         done();
+    //                     });
+    //             });
+    //     });
+    //     it('Should throw error if Amount is not an integer', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(correctUser)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .post(url)
+    //                     .set('token', token)
+    //                     .send(invalidAmount)
+    //                     .end((err, res) => {
+    //                         res.body.should.be.a('object');
+    //                         res.should.have.status(400);
+    //                         res.body.should.have.property('error');
+    //                         res.body.error.should.eql('Amount and tenor should be integers');
+    //                         done();
+    //                     });
+    //             });
+    //         it('Should throw error if Tenor is not an integer', (done) => {
+    //             chai
+    //                 .request(app)
+    //                 .post(loginUrl)
+    //                 .send(correctUser)
+    //                 .end((loginErr, loginRes) => {
+    //                     const token = `${loginRes.body.data.token}`;
+    //                     chai
+    //                         .request(app)
+    //                         .post(url)
+    //                         .set('token', token)
+    //                         .send(invalidTenor)
+    //                         .end((err, res) => {
+    //                             res.body.should.be.a('object');
+    //                             res.should.have.status(400);
+    //                             res.body.should.have.property('error');
+    //                             res.body.error.should.eql('Amount and tenor should be integersr');
+    //                             done();
+    //                         });
+    //                 });
+    //         });
+    //     });
+    // });
+    // describe(`POST ${url}`, () => {
+    //     it('Should throw error if user applies for loan more than once', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(correctUser)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .post(url)
+    //                     .set('token', token)
+    //                     .send(correctLoan)
+    //                     .end((err, res) => {
+    //                         chai
+    //                             .request(app)
+    //                             .post(url)
+    //                             .set('token', token)
+    //                             .send(correctLoan)
+    //                             .end((err, res) => {
+    //                                 res.should.have.status(409);
+    //                                 res.body.should.be.a('object');
+    //                                 res.body.should.have.property('error');
+    //                                 res.body.message.should.eql('You already applied for a loan!');
+    //                                 done();
+    //                             });
+    //                     });
+    //             });
+    //     });
+    // });
+
+    // TEST TO GET LOAN APPLICATIONS
+    describe(`GET ${url}`, () => {
+        it('Should return all loan applications', (done) => {
             chai
                 .request(app)
                 .post(loginUrl)
@@ -33,39 +192,23 @@ describe('Tests for Loan Endpoint', () => {
                     const token = `${loginRes.body.data.token}`;
                     chai
                         .request(app)
-                        .post(url)
-                        .end((err, res) => {
-                            res.should.have.status(401);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('error');
-                            res.body.error.should.be.eql('Token not provided');
-                            done();
-                        });
-                });
-        });
-        it('Should create loan application successfully', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(correctUser)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .post(url)
+                        .get(url)
                         .set('token', token)
-                        .send(correctLoan)
                         .end((err, res) => {
+                            res.should.have.status(200);
                             res.body.should.be.a('object');
-                            res.should.have.status(201);
                             res.body.should.have.property('data');
+                            res.body.data[0].should.have.property('useremail');
+                            res.body.data[0].should.have.property('createdon');
+                            res.body.data[0].should.have.property('loan_status');
+                            res.body.data[0].should.have.property('repaid');
                             done();
                         });
                 });
+
         });
 
-
-        it('Should throw error if Amount is omitted', (done) => {
+        it('Should throw an error if user is not an admin', (done) => {
             chai
                 .request(app)
                 .post(loginUrl)
@@ -74,161 +217,18 @@ describe('Tests for Loan Endpoint', () => {
                     const token = `${loginRes.body.data.token}`;
                     chai
                         .request(app)
-                        .post(url)
+                        .get(url)
                         .set('token', token)
-                        .send(ommittedAmount)
                         .end((err, res) => {
+                            res.should.have.status(403);
                             res.body.should.be.a('object');
-                            res.should.have.status(400);
                             res.body.should.have.property('error');
-                            res.body.error.should.eql('Tenor, and amount cannot be empty');
+                            res.body.error.should.be.eql('Only Admin can access this route!');
                             done();
-                        });
-                });
-        });
-        it('Should throw error if tenor is omitted', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(correctUser)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .post(url)
-                        .set('token', token)
-                        .send(ommittedTenor)
-                        .end((err, res) => {
-                            res.body.should.be.a('object');
-                            res.should.have.status(400);
-                            res.body.should.have.property('error');
-                            res.body.error.should.eql('Tenor, and amount cannot be empty');
-                            done();
-                        });
-                });
-        });
-        it('Should throw error if Amount is not an integer', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(correctUser)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .post(url)
-                        .set('token', token)
-                        .send(invalidAmount)
-                        .end((err, res) => {
-                            res.body.should.be.a('object');
-                            res.should.have.status(400);
-                            res.body.should.have.property('error');
-                            res.body.error.should.eql('Amount and tenor should be integers');
-                            done();
-                        });
-                });
-            it('Should throw error if Tenor is not an integer', (done) => {
-                chai
-                    .request(app)
-                    .post(loginUrl)
-                    .send(correctUser)
-                    .end((loginErr, loginRes) => {
-                        const token = `${loginRes.body.data.token}`;
-                        chai
-                            .request(app)
-                            .post(url)
-                            .set('token', token)
-                            .send(invalidTenor)
-                            .end((err, res) => {
-                                res.body.should.be.a('object');
-                                res.should.have.status(400);
-                                res.body.should.have.property('error');
-                                res.body.error.should.eql('Amount and tenor should be integersr');
-                                done();
-                            });
-                    });
-            });
-        });
-    });
-    describe(`POST ${url}`, () => {
-        it('Should throw error if user applies for loan more than once', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(correctUser)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .post(url)
-                        .set('token', token)
-                        .send(correctLoan)
-                        .end((err, res) => {
-                            chai
-                                .request(app)
-                                .post(url)
-                                .set('token', token)
-                                .send(correctLoan)
-                                .end((err, res) => {
-                                    res.should.have.status(409);
-                                    res.body.should.be.a('object');
-                                    res.body.should.have.property('error');
-                                    res.body.message.should.eql('You already applied for a loan!');
-                                    done();
-                                });
                         });
                 });
         });
     });
-
-    // // TEST TO GET LOAN APPLICATIONS
-    // describe(`GET ${url}`, () => {
-    //     it('Should return all loan applications', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(myAdmin)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(url)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         console.log(res.body.data[0]);
-    //                         res.should.have.status(200);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('data');
-    //                         res.body.data[0].should.have.property('useremail');
-    //                         res.body.data[0].should.have.property('createdon');
-    //                         res.body.data[0].should.have.property('status');
-    //                         res.body.data[0].should.have.property('repaid');
-    //                         done();
-    //                     });
-    //             });
-
-    //     });
-
-    //     it('Should throw an error if user is not an admin', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(correctUser)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(url)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         res.should.have.status(403);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('error');
-    //                         res.body.error.should.be.eql('Only Admin can access this route');
-    //                         done();
-    //                     });
-    //             });
-    //     });
 
     //     it('Should return a single loan application', (done) => {
 

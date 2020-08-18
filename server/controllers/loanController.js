@@ -2,7 +2,7 @@
 import moment from 'moment';
 import dbQuery from '../models/dbQuery';
 import {
-    userDetailsQuery, createLoanQuery, getUserLoans
+    userDetailsQuery, createLoanQuery, getUserLoans, queryAllLoans, getALoan, getLoans,
 } from '../models/queries';
 import { isNumber, isEmpty, checkRange } from '../helpers/validations';
 import {
@@ -54,32 +54,49 @@ const loanApply = async (req, res) => {
     }
     const findLoan = await dbQuery.query(getUserLoans, [email]);
     if (!findLoan.rows.length || findLoan.rows[findLoan.rows.length - 1].repaid === true) {
-        // try {
-        const data = {
-            email: email,
-            tenor,
-            amount,
-            paymentInstallment: loanData.paymentInstallment,
-            balance: loanData.balance,
-            interest: loanData.interest,
-        };
-        const values = [email, created_on, data.tenor, data.amount, data.paymentInstallment, data.balance, data.interest];
-        const addLoanData = await dbQuery.query(createLoanQuery, values);
-        const getAppliedLoan = await dbQuery.query(getUserLoans, [email]);
-        const result = getAppliedLoan.rows[0];
-        successMessage.data = result;
-        successMessage.message = 'Loan Application has been sent successfully';
-        return res.status(status.created).send(successMessage);
-        // } catch (error) {
-        //     errorMessage.error = 'Operation was not successful';
-        //     return res.status(status.error).send(errorMessage);
-        // }
+        try {
+            const data = {
+                email: email,
+                tenor,
+                amount,
+                paymentInstallment: loanData.paymentInstallment,
+                balance: loanData.balance,
+                interest: loanData.interest,
+            };
+            const values = [email, created_on, data.tenor, data.amount, data.paymentInstallment, data.balance, data.interest];
+            const addLoanData = await dbQuery.query(createLoanQuery, values);
+            const getAppliedLoan = await dbQuery.query(getUserLoans, [email]);
+            const result = getAppliedLoan.rows[0];
+            successMessage.data = result;
+            successMessage.message = 'Loan Application has been sent successfully';
+            return res.status(status.created).send(successMessage);
+        } catch (error) {
+            errorMessage.error = 'Operation was not successful';
+            return res.status(status.error).send(errorMessage);
+        }
     }
     errorMessage.error = 'You already applied for a loan!';
 
     return res.status(status.conflict).send(errorMessage);
 }
 
+/**
+   * @method getAllLoans
+   * @description gets all loan applications
+   * @param {object} req - The Request Object
+   * @param {object} res - The Response Object
+   * @returns {object} JSON API Response
+   */
+const getAllLoans = async (req, res) => {
+    const retrieveLoan = await dbQuery.query(getLoans);
+    if (retrieveLoan.rows.length < 1) {
+        successMessage.success = 'No Loan available at the moment';
+        return res.status(status.success).send(successMessage);
+    }
+    successMessage.data = retrieveLoan.rows;
+    successMessage.message = 'Loan retrieved successfully';
+    return res.status(status.success).send(successMessage);
+}
 
 
-export { loanApply };
+export { loanApply, getAllLoans };
