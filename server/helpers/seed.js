@@ -1,4 +1,4 @@
-import pool from '../models/dev/pool';
+import pool from '../models/pool';
 
 pool.on('connect', () => {
     console.log('connected to the db');
@@ -8,7 +8,7 @@ pool.on('connect', () => {
 /**
  * SEED User
  */
-const seed = () => {
+const seedUser = () => {
     const seedUserQuery = `INSERT INTO
     users VALUES 
     ( default, 'eferha@gmail.com', 'Eferha', 'Eferha', '111111', true, 'Lagos', 'verified', NOW()),
@@ -28,11 +28,31 @@ const seed = () => {
         });
 };
 
+const seedLoan = () => {
+
+    const seedLoanQuery = `INSERT INTO
+    loans VALUES 
+    ( default, 'efera@gmail.com', NOW(), default, default, 12, 20000, 2666.52, 2000, 2500),
+    ( default, 'sc@gmail.com', NOW(), default, default, 12, 20000, 2666.52, 2000, 2500)`;
+
+    pool.query(seedLoanQuery)
+        .then((res) => {
+            console.log(res);
+            pool.end();
+        })
+        .catch((err) => {
+            console.log(err);
+            pool.end();
+        });
+
+};
+
 /**
  * Seed users
  */
-const seedUser = () => {
-    seed();
+const seed = () => {
+    seedUser();
+    seedLoan();
 };
 
 pool.on('remove', () => {
@@ -40,6 +60,6 @@ pool.on('remove', () => {
     process.exit(0);
 });
 
-export { seedUser };
+export { seed };
 
 require('make-runnable');

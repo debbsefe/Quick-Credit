@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create-tables": "babel-node ./server/models/dev/dbConnection createAllTables",
+    "create-tables": "babel-node ./server/models/dbConnection createAllTables",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha --timeout 10000 ./server/test/**.test.js -r @babel/register",
     "start": "nodemon --watch . --exec babel-node -- server/app",
     "dev": "nodemon --exec npm start",
     "setup": "npm-run-all -p start create-tables",
-    "seed-user-table": "babel-node ./server/helpers/seed seedUser",
+    "seed-user-table": "babel-node ./server/helpers/seed seed",
     "type": "module",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls"
