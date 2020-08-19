@@ -88,6 +88,20 @@ const loanApply = async (req, res) => {
    * @returns {object} JSON API Response
    */
 const getAllLoans = async (req, res) => {
+    let { loan_status, repaid } = req.query;
+    if (loan_status && repaid) {
+        repaid = JSON.parse(repaid);
+
+        const values = [loan_status, repaid];
+        const result = await dbQuery.query(queryAllLoans, values);
+        if (result.rows.length < 1) {
+            successMessage.message = 'No data matched your request at the moment, check back later!';
+            return res.status(status.success).send(successMessage);
+        }
+        successMessage.data = result.rows;
+        successMessage.message = 'Loan retrieved successfully';
+        return res.status(status.success).send(successMessage);
+    }
     const retrieveLoan = await dbQuery.query(getLoans);
     if (retrieveLoan.rows.length < 1) {
         successMessage.success = 'No Loan available at the moment';
