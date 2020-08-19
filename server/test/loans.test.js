@@ -281,47 +281,47 @@ describe('Tests for Loan Endpoint', () => {
 
 
     // TEST TO VALIDATE FOR LOAN QUERY PARAMETERS
-    describe(`GET ${url}`, () => {
-        it('Should return all loan applications that are approved and repaid', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(myAdmin)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .get(repaidUrl)
-                        .set('token', token)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('data');
-                            done();
-                        });
-                });
-        });
-        it('Should return all loan applications that are approved and not repaid', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(myAdmin)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .get(unrepaidUrl)
-                        .set('token', token)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('data');
-                            done();
-                        });
-                });
-        });
+    // describe(`GET ${url}`, () => {
+    //     it('Should return all loan applications that are approved and repaid', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(myAdmin)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .get(repaidUrl)
+    //                     .set('token', token)
+    //                     .end((err, res) => {
+    //                         res.should.have.status(200);
+    //                         res.body.should.be.a('object');
+    //                         res.body.should.have.property('data');
+    //                         done();
+    //                     });
+    //             });
+    //     });
+    //     it('Should return all loan applications that are approved and not repaid', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(myAdmin)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .get(unrepaidUrl)
+    //                     .set('token', token)
+    //                     .end((err, res) => {
+    //                         res.should.have.status(200);
+    //                         res.body.should.be.a('object');
+    //                         res.body.should.have.property('data');
+    //                         done();
+    //                     });
+    //             });
+    //     });
 
-    });
+    // });
 
 
 

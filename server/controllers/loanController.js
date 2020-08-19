@@ -112,5 +112,26 @@ const getAllLoans = async (req, res) => {
     return res.status(status.success).send(successMessage);
 }
 
+/**
+   * @method getOneLoan
+   * @description retrieves one loan application
+   * @param {object} req - The Request Object
+   * @param {object} res - The Response Object
+   * @returns {object} JSON API Response
+   */
+const retrieveOneLoan = async (req, res) => {
+    const { id } = req.params;
+    const result = await dbQuery.query(getALoan, [id]);
+    if (result.rows.length) {
+        successMessage.data = result.rows[0];
+        successMessage.message = 'Loan retrieved successfully';
+        return res.status(status.success).send(successMessage);
+    }
+    errorMessage.error = 'No Loan with that id exist on database';
+    return res.status(status.notfound).send(errorMessage);
 
-export { loanApply, getAllLoans };
+}
+
+
+
+export { loanApply, getAllLoans, retrieveOneLoan };
