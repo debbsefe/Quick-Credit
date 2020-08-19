@@ -182,53 +182,53 @@ describe('Tests for Loan Endpoint', () => {
     // });
 
     // TEST TO GET LOAN APPLICATIONS
-    describe(`GET ${url}`, () => {
-        it('Should return all loan applications', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(myAdmin)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .get(url)
-                        .set('token', token)
-                        .end((err, res) => {
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('data');
-                            res.body.data[0].should.have.property('useremail');
-                            res.body.data[0].should.have.property('createdon');
-                            res.body.data[0].should.have.property('loan_status');
-                            res.body.data[0].should.have.property('repaid');
-                            done();
-                        });
-                });
+    // describe(`GET ${url}`, () => {
+    //     it('Should return all loan applications', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(myAdmin)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .get(url)
+    //                     .set('token', token)
+    //                     .end((err, res) => {
+    //                         res.should.have.status(200);
+    //                         res.body.should.be.a('object');
+    //                         res.body.should.have.property('data');
+    //                         res.body.data[0].should.have.property('useremail');
+    //                         res.body.data[0].should.have.property('createdon');
+    //                         res.body.data[0].should.have.property('loan_status');
+    //                         res.body.data[0].should.have.property('repaid');
+    //                         done();
+    //                     });
+    //             });
 
-        });
+    //     });
 
-        it('Should throw an error if user is not an admin', (done) => {
-            chai
-                .request(app)
-                .post(loginUrl)
-                .send(correctUser)
-                .end((loginErr, loginRes) => {
-                    const token = `${loginRes.body.data.token}`;
-                    chai
-                        .request(app)
-                        .get(url)
-                        .set('token', token)
-                        .end((err, res) => {
-                            res.should.have.status(403);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('error');
-                            res.body.error.should.be.eql('Only Admin can access this route!');
-                            done();
-                        });
-                });
-        });
-    });
+    //     it('Should throw an error if user is not an admin', (done) => {
+    //         chai
+    //             .request(app)
+    //             .post(loginUrl)
+    //             .send(correctUser)
+    //             .end((loginErr, loginRes) => {
+    //                 const token = `${loginRes.body.data.token}`;
+    //                 chai
+    //                     .request(app)
+    //                     .get(url)
+    //                     .set('token', token)
+    //                     .end((err, res) => {
+    //                         res.should.have.status(403);
+    //                         res.body.should.be.a('object');
+    //                         res.body.should.have.property('error');
+    //                         res.body.error.should.be.eql('Only Admin can access this route!');
+    //                         done();
+    //                     });
+    //             });
+    //     });
+    // });
 
     //     it('Should return a single loan application', (done) => {
 
@@ -280,131 +280,50 @@ describe('Tests for Loan Endpoint', () => {
     // });
 
 
-    // // TEST TO VALIDATE FOR LOAN QUERY PARAMETERS
-    // describe(`GET ${url}`, () => {
-    //     it('Should return all loan applications that are approved and repaid', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(myAdmin)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(repaidUrl)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         res.should.have.status(200);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('data');
-    //                         done();
-    //                     });
-    //             });
-    //     });
-    //     it('Should return all loan applications that are approved and not repaid', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(myAdmin)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(unrepaidUrl)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         res.should.have.status(200);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('data');
-    //                         done();
-    //                     });
-    //             });
-    //     });
+    // TEST TO VALIDATE FOR LOAN QUERY PARAMETERS
+    describe(`GET ${url}`, () => {
+        it('Should return all loan applications that are approved and repaid', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(myAdmin)
+                .end((loginErr, loginRes) => {
+                    const token = `${loginRes.body.data.token}`;
+                    chai
+                        .request(app)
+                        .get(repaidUrl)
+                        .set('token', token)
+                        .end((err, res) => {
+                            res.should.have.status(200);
+                            res.body.should.be.a('object');
+                            res.body.should.have.property('data');
+                            done();
+                        });
+                });
+        });
+        it('Should return all loan applications that are approved and not repaid', (done) => {
+            chai
+                .request(app)
+                .post(loginUrl)
+                .send(myAdmin)
+                .end((loginErr, loginRes) => {
+                    const token = `${loginRes.body.data.token}`;
+                    chai
+                        .request(app)
+                        .get(unrepaidUrl)
+                        .set('token', token)
+                        .end((err, res) => {
+                            res.should.have.status(200);
+                            res.body.should.be.a('object');
+                            res.body.should.have.property('data');
+                            done();
+                        });
+                });
+        });
 
-    //     it('Should return error for wrong status word entered', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(myAdmin)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(wrongStatusUrl)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         res.should.have.status(400);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('error');
-    //                         res.body.error.should.be.eql('Invalid status specified!');
-    //                         done();
-    //                     });
-    //             });
-    //     });
+    });
 
-    //     it('Should return error for wrong repaid word entered', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(myAdmin)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(wrongRepaidUrl)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         res.should.have.status(400);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('error');
-    //                         res.body.error.should.be.eql('Invalid repaid entered');
-    //                         done();
-    //                     });
-    //             });
-    //     });
 
-    //     it('Should return error for wrong status type is entered', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(myAdmin)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(wrongStatusType)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         res.should.have.status(400);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('error');
-    //                         res.body.error.should.be.eql('Invalid type of status entered!');
-    //                         done();
-    //                     });
-    //             });
-    //     });
-
-    //     it('Should return error for wrong repaid type is entered', (done) => {
-    //         chai
-    //             .request(app)
-    //             .post(loginUrl)
-    //             .send(myAdmin)
-    //             .end((loginErr, loginRes) => {
-    //                 const token = `Bearer ${loginRes.body.data.token}`;
-    //                 chai
-    //                     .request(app)
-    //                     .get(wrongRepaidType)
-    //                     .set('authorization', token)
-    //                     .end((err, res) => {
-    //                         res.should.have.status(400);
-    //                         res.body.should.be.a('object');
-    //                         res.body.should.have.property('error');
-    //                         res.body.error.should.be.eql('Invalid type of repaid entered!');
-    //                         done();
-    //                     });
-    //             });
-    //     });
-    // });
 
     // // TEST TO VALIDATE FOR ADMIN DECISION
     // describe(`PATCH ${url}`, () => {
