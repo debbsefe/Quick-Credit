@@ -7,8 +7,8 @@ const router = express.Router();
 
 // users Routes
 
-router.post('/auth/signup', createUser);
-router.post('/auth/signin', siginUser);
+router.post('/signup', createUser);
+router.post('/signin', siginUser);
 router.patch('/:email/verify', verifyToken, adminVerifyUser);
 
 export default router;

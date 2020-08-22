@@ -2,7 +2,7 @@
 import moment from 'moment';
 import dbQuery from '../models/dbQuery';
 import {
-    userDetailsQuery, createLoanQuery, getUserLoans, queryAllLoans, getALoan, getLoans,
+    userDetailsQuery, createLoanQuery, getUserLoans, queryAllLoans, getALoan, getLoans, changeLoanStatus,
 } from '../models/queries';
 import { isNumber, isEmpty, checkRange } from '../helpers/validations';
 import {
@@ -132,6 +132,44 @@ const retrieveOneLoan = async (req, res) => {
 
 }
 
+/**
+  * @method adminApproveLoan
+  * @description gets loan application and approves/rejects
+  * @param {object} req - The Request Object
+  * @param {object} res - The Response Object
+  * @returns {object} JSON API Response
+  */
+const adminApproveLoan = async (req, res) => {
+    const { loan_status } = req.body;
+    const { id } = req.params;
+    if (isEmpty(loan_status)) {
+        errorMessage.error = 'Loan Status field cannot be empty';
+        return res.status(status.bad).send(errorMessage);
+    }
+    const values = [loan_status, id];
+    const getLoan = await dbQuery.query(getALoan, [id]);
 
+    if (!getLoan.rows.length) {
+        errorMessage.error = 'No Loan with that id exist on database';
+        return res.status(status.notfound).send(errorMessage);
+    }
+    if (getLoan.rows[0].loan_status === 'approved' || getLoan.rows[0].loan_status === 'rejected') {
+        errorMessage.error = `This loan has already been ${getLoan.rows[0].loan_status}`;
+        return res.status(status.conflict).send(errorMessage);
+    }
+    if (getLoan.rows.length && loan_status !== 'rejected') {
+        const getUser = await dbQuery.query(userDetailsQuery, [getLoan.rows[0].useremail]);
+        if (getUser.rows[0].user_status === 'unverified') {
+            errorMessage.error = `This user has not been verified!`;
+            return res.status(status.bad).send(errorMessage);
+        }
+        const updateLoanStatus = await dbQuery.query(changeLoanStatus, values);
+        const returnData = await dbQuery.query(getALoan, [id]);
+        successMessage.data = returnData.rows[0];
+        successMessage.message = 'Loan Updated Successfully';
+        return res.status(status.success).send(successMessage);
+    }
 
-export { loanApply, getAllLoans, retrieveOneLoan };
+}
+
+export { loanApply, getAllLoans, retrieveOneLoan, adminApproveLoan };
