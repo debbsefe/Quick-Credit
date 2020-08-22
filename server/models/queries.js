@@ -18,6 +18,8 @@ const getALoan = 'SELECT * FROM loans WHERE id=$1';
 
 const queryAllLoans = 'SELECT * FROM LOANS WHERE loan_status=$1 AND repaid=$2';
 
+const changeLoanStatus = 'UPDATE loans SET loan_status=$1 WHERE id=$2';
+
 
 export {
     createUserQuery,
@@ -28,4 +30,5 @@ export {
     getLoans,
     getALoan,
     queryAllLoans,
+    changeLoanStatus,
 };

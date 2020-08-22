@@ -46,6 +46,13 @@ const createUser = async (req, res) => {
         errorMessage.error = 'Password must be more than five(5) characters';
         return res.status(status.bad).send(errorMessage);
     }
+    const { rows } = await dbQuery.query(userDetailsQuery, [email]);
+    if (rows.length > 0) {
+        errorMessage.error = 'User with that EMAIL already exists';
+        return res.status(status.conflict).send(errorMessage);
+
+    }
+
     const hashedPassword = hashPassword(password);
 
     const values = [
@@ -59,17 +66,18 @@ const createUser = async (req, res) => {
 
     try {
         const { rows } = await dbQuery.query(createUserQuery, values);
+
+        console.log(rows);
         const dbResponse = rows[0];
+        if (dbResponse.email) console.log('exist')
         delete dbResponse.password;
         const token = generateUserToken(dbResponse.email, dbResponse.id, dbResponse.is_admin, dbResponse.first_name, dbResponse.last_name, dbResponse.address, dbResponse.user_status);
         successMessage.data = dbResponse;
         successMessage.data.token = token;
         return res.status(status.created).send(successMessage);
-    } catch (error) {
-        if (error.routine === '_bt_check_unique') {
-            errorMessage.error = 'User with that EMAIL already exist';
-            return res.status(status.conflict).send(errorMessage);
-        }
+    } catch (e) {
+        console.log(e);
+
         errorMessage.error = 'Operation was not successful';
         return res.status(status.error).send(errorMessage);
     }

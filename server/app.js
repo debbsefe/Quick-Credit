@@ -3,14 +3,13 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import '@babel/polyfill';
 import 'esm';
-import usersRoute from './routes/usersRoute';
-import loanRoutes from './routes/loanRoutes';
+import routes from './routes'
 
 const app = express();
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/api/v1', usersRoute, loanRoutes);
+app.use('/api/v1', routes);
 
 app.get('/', (req, res) => res.status(301).redirect('/api/v1'));
 
