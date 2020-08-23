@@ -1,6 +1,6 @@
 {
   "swagger": "2.0",
-  "host": "https://quickcreditng.herokuapp.com",
+  "host": "quickcreditng.herokuapp.com",
   "basePath": "/api/v1",
   "schemes": ["https"],
   "info": {
