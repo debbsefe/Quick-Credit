@@ -4,12 +4,21 @@ import morgan from 'morgan';
 import '@babel/polyfill';
 import 'esm';
 import routes from './routes'
+import swaggerUi from 'swagger-ui-express';
+import swaggerDoc from '../swagger.json';
+import cors from 'cors';
+
 
 const app = express();
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+
 app.use('/api/v1', routes);
+
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+
 
 app.get('/', (req, res) => res.status(301).redirect('/api/v1'));
 
