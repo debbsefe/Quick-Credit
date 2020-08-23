@@ -35,7 +35,7 @@ Quick Credit is an online lending platform that provides short term soft loans t
 
 # UI Templates
 
-Preview UI templates :+1: [Github Pages](/)
+Preview UI templates :+1: [Github Pages](https://github.com/debbsefe/Quick-Credit/tree/gh-pages)
 
 # API
 
@@ -43,7 +43,7 @@ The API is currently in version 1 (v1) and is hosted at https://quickcreditng.he
 
 # API-Documentation
 
-The API endpoints are documented using swagger.json and can be accessed here [API-Docs]
+The API endpoints are documented using swagger.json and can be accessed here [API-Docs](https://app.swaggerhub.com/apis-docs/debbsefe/quick-credit_api_v_1/1.0.0)
 
 # Pivotal Tracker ID
 
